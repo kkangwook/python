@@ -1,0 +1,3 @@
+import mod3
+a=mod3.add(1,2)
+print(a)
