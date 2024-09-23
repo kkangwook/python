@@ -14,6 +14,9 @@ print(dic)
 print(dic['a'])
 print(dic.get('a'))
 
+# key가 없을시
+print(dic.get('e','사용가능'))    # e가 dic에 없으면 '사용가능이 뜸'
+
 #key, value, 둘다얻기
 print(dic.keys())
 print(dic.values())
