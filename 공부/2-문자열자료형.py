@@ -68,3 +68,11 @@ d='python\n'
 e='\npython\n'
 print(a.upper(),b.lower())
 print(c.lstrip(),d.rstrip(),e.strip())
+
+#배치하기
+scores={'수학':7,'영어':50,'코딩':100}
+for x,y in scores.items():
+    print(x.ljust(8),str(y).rjust(4),sep=':')   #x는 8칸 확보후 왼쪽부터, y는 4칸확보후 오른쪽부터
+# 수학      :   7
+# 영어      :  50      
+# 코딩      : 100  
