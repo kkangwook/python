@@ -4,6 +4,7 @@
 #쌍 추가하기
 dic={'a':1,'b':2,'c':3}
 dic['d']=4          #indexing X
+dic['a']=5          # a:5로 replace
 print(dic)
 
 #쌍 삭제하기
