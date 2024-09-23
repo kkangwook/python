@@ -31,6 +31,9 @@ print(a1.add())
 print(a1.pow())
 print(a1.div())
 
+#다중 상속도 가능
+class xcal(cal,newcal):        #cal과 newcal동시에 상속
+    pass
 
 #클래스 변수
 class family:
