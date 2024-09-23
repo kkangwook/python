@@ -58,6 +58,8 @@ e=['life','is','too','short']
 print(' '.join(e))
 print(d.split(' '))
 
+# end=''의 경우 print(a,b,end='?')하면 a b?출력  제일끝에 ?가 옴
+
 # 소문자 대문자 공백지우기
 a='python'
 b='PYTHON'
