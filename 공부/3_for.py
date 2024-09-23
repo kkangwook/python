@@ -29,6 +29,7 @@ for i in score:
     
 # range사용
 #range(10):0-9를 의미,  range(1,10):1-9를 의미
+# list(range(1,10))으로 리스트화도 가능
 
 score=[90,25,67,45,80]
 
