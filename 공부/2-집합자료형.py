@@ -1,4 +1,5 @@
 #구조: a=set('hello'), b=set([1,2,3]) 중복X, 순서X, indexing X
+#a={1,2,3} type({})또한 set
 a=set('hello')
 b=set([1,2,3])
 print(a,b)
