@@ -1,4 +1,5 @@
 #import 필요
+#구글에 python module index치면 import할수있는 모듈들 나옴
 
 #날짜관련함수
 import datetime as d
