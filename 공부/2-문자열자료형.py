@@ -39,7 +39,10 @@ print(f'i\'m {age}years old and {age+1} next year')
 #count find index
 print(d.count('i'))
 print(d.find('i'))
-print(d.index('i'))
+index=d.index('i')    #제일 처음 나오는 i위치
+print(index)
+index=d.index('i',index+1)    #전에 찾은 i 다음 나오는 i 위치
+print(index)
 
 #join:리스트(문자열)를 문자열로, split:문자열을 리스트로
 print(','.join('abcde'))
