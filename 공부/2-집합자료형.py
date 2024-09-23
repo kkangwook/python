@@ -7,8 +7,8 @@ print(list(a),tuple(b))  #리스트화 튜플화 둘다 가능
 #교집합 합집합 차집합
 a=set('sjkfhsdjkvndjkvn')
 b=set('evrneuivberibe')
-print(a|b)          #합집합
-print(a&b)          #교집합
+print(a|b)          #합집합 or .union()
+print(a&b)          #교집합 or .intersection()
 print(a-b)          #차집합 2가지방법
 print(a.difference(b))
 
