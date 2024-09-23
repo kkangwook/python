@@ -32,6 +32,12 @@ d='life is too short, you need python'
 print(d[-1])
 print(d[-6:])
 
+#예시-url에서 https://와 .com뒤를 제거하고 싶을때
+site=input('사이트url을 입력하시오:')
+site=site.replace('https://www.','')    
+a=site[:site.index('.')]              #0에서 .이 있는 곳 까지 인덱싱
+print(a)
+
 #문자열 포매팅
 print('i ate %dapples %dbananas and %d%%beer' %(2,3,7))
 print('i ate {0}apples {1}bananas and {2}%beer'.format(2,3,7))
