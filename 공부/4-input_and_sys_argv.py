@@ -10,6 +10,9 @@ print('hello''world''nice''too''meet''you')         #1과
 print('hello'+'world'+'nice'+'too'+'meet'+'you')    #2는 같음
 print('hello','world','nice','too','meet','you')    #3은 ,가 뛰어쓰기
 
+#print에서 sep
+print('hello','world','nice','too','meet','you',sep='vs')  # sep에 의해  hellovsworldvsnicevstoovsmeetvsyou 로 vs가 안에 들어감
+
 #명령자에 적은것을 print(dir위치는 .py위치와 같아야 하므로 cd dir필요)
 import sys
 
