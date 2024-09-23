@@ -13,6 +13,8 @@ sd''')
 print('asdasd\nsdf\nsd')
 
 #표현법: \n=줄바꾸기, \'=', \t=탭, \\=\
+print('red apple\rpine')    # \r:커서를 맨앞으로
+print('redd\b apple')       # \b:한글자 삭제
 
 #문자열 더하기 곱하기
 a='py' 
