@@ -290,3 +290,77 @@ print(dict(zip(a,b)))   # dict함수로 딕셔너리화
 # or
 d=[[1,'a'],[2,'b'],[3,'c'],[4,'d']]
 print(dict(d))
+
+
+
+# 18. 중첩함수
+def outer_func(data) : # outer 함수 
+    dataset = data # dataset 생성
+    
+    # inner 함수 
+    def tot() : # 합계
+        tot_val = sum(dataset)
+        return tot_val
+
+    def avg(tot_val) : # 평균 
+        avg_val = tot_val / len(dataset)
+        return avg_val        
+    
+    return tot, avg # inner 함수 반환 
+
+tot, avg=outer_func([1,2,3,4,5])    #두개로 받아옴
+print(tot())     # ->15
+print(avg(tot()))    # ->3.0
+
+
+# 문제
+'''
+문7) 중첩함수 응용 : 아래와 같이 outer와 inner 함수의 역할에 맞게 두 개의 내부함수(innder)를 
+     완성하시오.
+
+ 1.outer 함수 역할 : 3명 학생의 점수(scores) 저장, inner 함수 포함 
+ 2.inner 함수 역할 : 
+   tot_df 함수 : 각 학생의 점수(3개 과목)를 이용하여 촘점을 계산한 후 총점을 반환한다.
+   avg_df 함수 : 각 학생의 총점과 과목수를 인수로 받아서 평균을 계산하고 결과를 출력한다.
+     
+ <출력 결과>
+  평균 = [70.0, 85.0, 79.0]
+'''
+
+def scores_pro(scores) : # outer 
+    scores = scores
+    
+    # 총점 계산 : inner
+    def tot_df() :
+        pass
+        
+    # 평균 계산 : inner
+    def avg_df(tots, cnt) : # (총점, 과목수)
+        pass
+    
+    return tot_df, avg_df # 내부함수 반환 
+
+
+# 실인수로 사용할 3명의 학생 성적(과목수 3개) 
+scores = [[60,80,70], [80,85,90], [70,82,85]]
+
+
+# 19. nonlocal 명령어 
+
+def main_func(num) : # outer
+    num_val = num # data 생성 
+    
+    # inner 
+    def get_func() : # 값 획득 : 획득자 ->함수내의 값을 외부로 넘기는 함수
+        return num_val  
+    
+    def set_func(value) : # 값 지정 : 지정자 ->함수내의 값을 수정하는 함수
+        nonlocal num_val    # ->outer의 main_func에서 만든 변수를 가져오겠다
+        num_val = value  # 새로운 value로 num_val수정-> return이 없음
+        
+    return get_func, set_func
+
+a,b=main_func(99)
+print(a())    # ->99
+print(b(88))   #none
+print(a())   # ->88  :set_func(88)로 수정했으므로
