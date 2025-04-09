@@ -359,8 +359,44 @@ def main_func(num) : # outer
         num_val = value  # 새로운 value로 num_val수정-> return이 없음
         
     return get_func, set_func
-
+   
 a,b=main_func(99)
 print(a())    # ->99
 print(b(88))   #none
 print(a())   # ->88  :set_func(88)로 수정했으므로
+
+#20. mangling추가
+
+class Account : 
+   
+    # 생성자 
+    def __init__(self, bal, name, no):
+        # 동적 멤버 변수 
+        self.__balance = bal # 잔액(은닉 멤버변수)
+        self.name = name # 예금주  
+        self.no = no # 계좌번호         
+            
+    # 잔액확인 : 획득자(getter) - return문 
+    def getBalance(self): 
+        return self.__balance     #이렇게 맹글링 부르는 것은 가능!!!!!!!!!!1
+    
+    # 입금하기 : 지정자(setter) - 매개변수 
+    def deposit(self, money):
+        self.__balance += money
+    
+    # 출금하기 : 지정자(setter) - 매개변수  
+    def withdraw(self, money): 
+        self.__balance -= money
+
+#객체 생성
+acc1=account(1000,'홍길동','12345')
+
+#맹글링의 특징
+# 1. dir에 안나옴
+dir(acc1)해도 name이나 no는 나오는데 __balance는 안나옴
+#2. 부를수 없음
+print(acc1.__balance, acc1.balance)  #둘다 에러남/또한 acc1.__balance=2000과 같은 행위도 불가!!!!!!
+
+#따라서 획득자로 불러야 됨!!!!!!!!!
+print(acc1.getBalance)
+여기서 dir(
