@@ -237,6 +237,7 @@ print(m.add(),m.__mangle)   # 20으로 바꿨지만 10으로 고정
 
 
 # 14.슈퍼 super()-> 서브클래스에서 부모클래스이 함수 사용
+# 안의 인수로 self는 뺌!!!!!!!!!!!
 class phone:
     def __init__(self,function=None):
         self.name=function
@@ -399,4 +400,66 @@ print(acc1.__balance, acc1.balance)  #둘다 에러남/또한 acc1.__balance=200
 
 #따라서 획득자로 불러야 됨!!!!!!!!!
 print(acc1.getBalance)
-여기서 dir(
+
+
+#21. @classmethod
+# 클래스 전용 함수장식자에 의해 클래스 자체를 셀프로 받음
+class MathClass :
+    #  클래스 자체의 변수  
+    x_class = 100
+    y_class = 50
+    
+    def __init__(self, x, y) :
+       # 동적멤버변수 : 인스턴스 변수  
+       self.x_ins = x
+       self.y_ins = y
+
+    @classmethod # 함수장식자 
+    def add(cls) :  # 클래스 메서드(cls) -> 클래스를 self로 받고 클래스자체 변수를 사용
+        return cls.x_class + cls.y_class
+
+    @classmethod
+    def subtract(cls) : # 클래스 메서드(cls)
+        return cls.x_class - cls.y_class
+
+    def multiply(self) : # 인스턴스 메서드(self) 
+        return self.x_ins * self.y_ins
+
+    def divide(self) : # 인스턴스 메서드(self)
+        return self.x_ins / self.y_ins
+
+# classmethod는 객체 없이 클래스 그자체로 클래스변수를 불러오거나 클래스메서드 바로사용가능
+# 물론 객체만들어서 클래스메서드 사용 가능
+MathClass.x_class # 100
+MathClass.y_class # 50
+
+MathClass.add() # 150
+MathClass.subtract() # 50
+
+# 이렇게 하면 에러뜸
+MathClass.divide()  # TypeError  
+MathClass.multiply() # TypeError
+
+# 2. 인스턴스(instance) 멤버
+obj = MathClass(1000, 500)
+
+dir(obj) # 객체 : 클래스 멤버 + 인스턴스 멤버 호출 
+'''
+ 'add',     : 클래스 메서드  
+ 'divide',  : 인스턴스 메서드
+ 'multiply', : 인스턴스 메서드
+ 'subtract', : 클래스 메서드 
+ 'x_class', : 클래스 변수 
+ 'x_ins',  : 인스턴스 변수 
+ 'y_class', : 클래스 변수
+ 'y_ins'    : 인스턴스 변수
+''' 
+
+obj.divide() # 2.0 : 객체.인스턴스 메서드()
+obj.multiply() # 500000 : 객체.인스턴스 메서드()
+
+#객체만들어서 클래스메서드 사용 가능
+# 객체 1000,500이랑 상관없이 클래스변수에만 영향
+obj.x_class; obj.y_class   #이렇게도 호출가능
+obj.add() # 150
+obj.subtract() # 50
