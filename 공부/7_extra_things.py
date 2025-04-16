@@ -463,3 +463,12 @@ obj.multiply() # 500000 : 객체.인스턴스 메서드()
 obj.x_class; obj.y_class   #이렇게도 호출가능
 obj.add() # 150
 obj.subtract() # 50
+
+
+#22. 얘를 실행할려면 어떻게 해야할까?
+def outer(func):
+    def inner(a):
+        return func(a)+1
+    return inner
+def twice(a):
+    return a*2
