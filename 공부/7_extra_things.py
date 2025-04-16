@@ -262,6 +262,29 @@ class newx(x):
 k=newx()
 print(k.add(100))  # hi가 프린트 되고 100값 출력
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!super!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+class x:
+    def __init__(self,a,b,c):
+        self.a=a
+        self.b=b
+        self.__c=c  
+    def add(self):
+        return self.a+self.b+self.__c
+
+class newx(x):    #상속
+    def __init__(self,a,b,c,d):
+        super().__init__(a,b,c)        여기서 self없이 작성->self.a같은거 안적어도됨
+        self.d=d                      self.d만 적으면 됨
+    def superadd(self):
+        return self.add()+self.d
+x1=newx(1,10,20,50)
+x1.superadd()
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
 
 # 15. class다중상속->,를 사용
 class multi(account,phone,mang):
