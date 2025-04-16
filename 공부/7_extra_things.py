@@ -359,7 +359,7 @@ def scores_pro(scores) : # outer
         pass
         
     # 평균 계산 : inner
-    def avg_df(tots, cnt) : # (총점, 과목수)
+    def avg_df() : # (총점, 과목수)
         pass
     
     return tot_df, avg_df # 내부함수 반환 
