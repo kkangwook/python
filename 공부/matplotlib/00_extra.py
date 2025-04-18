@@ -22,3 +22,10 @@ plt.hist(여러개뽑기)  ->정규분포그래프
 
 4. 연속형변수(continuous): 변수 사이에 무수히 많은 값을 가질 수 있음(키,몸무게)
  - plot, scatter, hist, boxplot, stem
+
+5. 간략어
+'color marker linestyle'  ex) 'bo--', 'rv-'
+
+6. 격자무늬넣기
+plt.grid()
+plt.style.use('ggplot')
