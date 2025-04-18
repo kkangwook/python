@@ -15,3 +15,10 @@ matplotlib.rcParams['axes.unicode_minus'] = False
 random.gauss(mu,sigma)  -> mu=평균(default=0), sigma=표준편차(default=1)
 여러개뽑기=[random.gauss() for i in range(100)]
 plt.hist(여러개뽑기)  ->정규분포그래프
+
+
+3. 이산형변수(discrete): 하나하나 셀수있는변수(변수 사이에 값없음-100명과 101명 사이에 100.5명 존재X)
+ - bar, barh, pie
+
+4. 연속형변수(continuous): 변수 사이에 무수히 많은 값을 가질 수 있음(키,몸무게)
+ - plot, scatter, hist, boxplot, stem
