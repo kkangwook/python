@@ -11,6 +11,9 @@ matplotlib.rcParams['axes.unicode_minus'] = False
 원래는 plt.plot(x,y)
 하지만 plt.plot(data)라면 x축은 0부터 1씩 증가, y값이 data 값
 
+1-2.plot계단형 차트로 그리기
+plt.plot(data,drawstyle='steps-post')
+
 2-1. 정규분포난수 뽑기
 random.gauss(mu,sigma)  -> mu=평균(default=0), sigma=표준편차(default=1)
 여러개뽑기=[random.gauss() for i in range(100)]
