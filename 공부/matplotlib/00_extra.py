@@ -54,6 +54,9 @@ plt.hist(data1)
 plt.hist(data2, bins=20)
 plt.show()    ->중복해서 표시
 
+-옆으로 여러 막대형식으로 같이 놓기
+plt.hist([data1,data2,data3])
+
 -스택으로 위에 쌓기
 plt.hist([data1,data2],stacked=True,color=['red','green'])
 plt.show()
