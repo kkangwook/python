@@ -251,3 +251,6 @@ f.close()
 #맷플롯립
 -- 수직선 긋기: plt.vlines(x,-1,n,colors,linestyles)
 -- 수평선 긋기: plt.hlines(y,-1,n,colors,linestyles)
+
+# 넘파이
+-- 1차원으로 만들기 flatten,ravel말고 arr.reshape(-1) or arr.reshape(m*n)으로 가능 # (m,n) 일때
