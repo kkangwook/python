@@ -253,4 +253,10 @@ f.close()
 -- 수평선 긋기: plt.hlines(y,-1,n,colors,linestyles)
 
 # 넘파이
+R vs numpy:
+	R: 열 우선 구조라 벡터를 더할때도 열형태로 더하고 차원도 (행,열,3차원)
+	   이미지는 (100,100,3) ->차원이 3개(RGB) 
+	numpy: 행 우선 구조라 벡터를 더할때도 행으로 더하고 차원도 (4차원,3차원,행,열)
+	   이미지는 (100,100,3) -> (height, width, channel)형태로 들어감-> 열에 RGB값이 한쌍으로
+		->이때 pytorch로 plt.imshow하면 (3,100,100)형태
 -- 1차원으로 만들기 flatten,ravel말고 arr.reshape(-1) or arr.reshape(m*n)으로 가능 # (m,n) 일때
