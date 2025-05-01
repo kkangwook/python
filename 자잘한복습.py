@@ -247,7 +247,8 @@ f.close()
 -- df.함수의 default는 axis=0(아래로==열별) 하지만  axis=1도 가능!!!!(행별)
 -- df의 컬럼의 리스트로:  df[col].tolist()
 -- df['col']과 df.col은 같음
---판다스도 sql과 마찬가지로 행간 연산에 na있으면 na, 열간 연산은 na무시하고 진행
+--판다스는 연산에 na가 있으면 na
+-- but!! 집계함수는 na무시
 
 
 #맷플롯립
