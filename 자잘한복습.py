@@ -257,8 +257,12 @@ f.close()
 	merge: sql의 조인(on + inner, left, rigth, outer join)
 	concat: 공통된 컬럼없어도 그냥 이어줌(사이즈 달라도 됨)
 	
+--데이터 프레임의 1차원화
+	1D=df.stack() -> 1차원화
+	2D=1D.unstack() -> 다시 원상태의 2차원으로
 
-
+-- 데이터프레임도 행/열 바꾸기 가능
+	df.T
 #맷플롯립
 -- 수직선 긋기: plt.vlines(x,-1,n,colors,linestyles)
 -- 수평선 긋기: plt.hlines(y,-1,n,colors,linestyles)
