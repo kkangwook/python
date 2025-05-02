@@ -278,8 +278,30 @@ f.close()
 -- df.groupby()에서 바로 시각화하기 by .plot()
 wine_group = wine_df.groupby(['type','quality'])
 grp_mean = wine_group.mean()
-grp_mean.plot(kind='bar')  #플롯 종류 kind로 지정
+grp_mean.plot(kind='bar', title='main title')  #플롯 종류 kind로 지정
 plt.show()
+
+
+--df.plot() 아무 조건 없으면 선 그래프
+ kind종류: 불연속적 데이터(이산형) - line, bar, barh, pie, 
+	   연속적 데이터 - hist, kde, box  #kde는 커널밀도추정: 히스토그램의 선형화 버전
+	   	scatter는 df.plot(kind='scatter',x='',y='')필요 
+		or pandas.plotting.scatter_matrix-> scatter_matrix(df)+ plt.show()
+			-> df각 컬럼들간 모든 조합의 scatter_plot을 matrix로 보여줌(수치형 아닌것들은 df에서 제외필요)
+
+-- 카이제곱표 만들기 by pd.crosstab() ->두 개 이상의 범주형 변수 간의 교차표
+ex1)
+data = pd.DataFrame({
+    '성별': ['남', '여', '남', '여', '남'],
+    '흡연': ['예', '아니오', '예', '아니오', '아니오']})
+pd.crosstab(index=data['성별'], columns=data['흡연'])	
+
+ex2)
+data = pd.DataFrame({
+    '성별': ['남', '여', '남', '여', '남'],
+    '흡연': ['예', '아니오', '예', '아니오', '아니오'],
+    '나이': [25, 30, 27, 22, 35]})
+pd.crosstab(index=data['성별'], columns=data['흡연'], values=data['나이'], aggfunc='mean')
 
 
 --pivot
@@ -298,12 +320,17 @@ table = pd.pivot_table(iris, values=['Sepal.Length', 'Petal.Length'], # 교차�
                        aggfunc= ['sum', 'mean'])  #함수두개면 각각의 컬럼을 추가로 생성
 
 -pivot_table의 시각화도 가능
-ptable.plot(kind='barh', stacked=True)
+ptable.plot(kind='barh', stacked=True, title='main title')
 
 
 #맷플롯립
 -- 수직선 긋기: plt.vlines(x,-1,n,colors,linestyles)
 -- 수평선 긋기: plt.hlines(y,-1,n,colors,linestyles)
+
+
+-- 이상치 제거 또 다른 방법
+ plt.boxplot(df['키'])해서 이상치 점들 기준으로 new_df=df[df['키']>165] 가능
+
 
 # 넘파이
 R vs numpy:
