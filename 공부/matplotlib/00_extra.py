@@ -81,3 +81,42 @@ plt.boxplot([data1,data2],labels=['1번데이터','2번데이터'])  #리스트�
 6. 격자무늬넣기
 plt.grid()
 plt.style.use('ggplot')
+
+
+'''
+색상기호
+
+b : blue
+g : green
+r : red
+c : cyan ( 청록색 )
+m : magenta ( 자홍색 )
+y : yellow
+k : black
+w : white
+
+스타일 기호
+
+- 실선 ( 기본값 )
+-- 이음선
+-. 점 이음선
+: 점선
+. 점
+, 픽셀
+o 원
+v 역삼각형
+^ 정삼각형
+< 좌삼각형
+> 우삼각형
+1 작은 역삼각형
+2 작은 정삼각형
+3 작은 좌삼각형
+4 작은 우삼각형
+s 사각형
+p 오각형
+* 별표
+h 육각형
++ 더하기 표
+D 다이아몬드 표
+X 엑스 표
+'''
