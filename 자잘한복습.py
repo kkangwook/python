@@ -263,6 +263,12 @@ f.close()
 
 -- 데이터프레임도 행/열 바꾸기 가능
 	df.T
+
+--함수를 개별로 적용시키고 싶을때
+	-집계함수는 행or열단위로 실행->각 칸마다 실행하고 싶을때 사용
+    -apply: df와 df.groupby()에 사용가능
+    -map: series나 df['column']에 사용가능
+
 #맷플롯립
 -- 수직선 긋기: plt.vlines(x,-1,n,colors,linestyles)
 -- 수평선 긋기: plt.hlines(y,-1,n,colors,linestyles)
