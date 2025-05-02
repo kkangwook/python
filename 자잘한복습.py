@@ -281,6 +281,26 @@ grp_mean = wine_group.mean()
 grp_mean.plot(kind='bar')  #플롯 종류 kind로 지정
 plt.show()
 
+
+--pivot
+pivot_table(DF, values='값',
+                index = '행 칼럼', columns = '열 칼럼'
+                ,aggFunc = '값에 적용될 함수')  #집계함수 생략하면 평균으로!!!!!
+각 요소에 값 여러개 넣을 수 있음-> 리스트 형식으로 넣으면 됨
+ex)
+ptable = pd.pivot_table(data=pivot_data, 
+               values='price', 
+               index=['year','quarter'],   #인덱스는 두개 이상이면 인덱스 전부를 사용해 그룹화
+               columns='size', aggfunc='sum')
+
+table = pd.pivot_table(iris, values=['Sepal.Length', 'Petal.Length'], # 교차셀 칼럼
+                       columns='Species', # 열 칼럼 
+                       aggfunc= ['sum', 'mean'])  #함수두개면 각각의 컬럼을 추가로 생성
+
+-pivot_table의 시각화도 가능
+ptable.plot(kind='barh', stacked=True)
+
+
 #맷플롯립
 -- 수직선 긋기: plt.vlines(x,-1,n,colors,linestyles)
 -- 수평선 긋기: plt.hlines(y,-1,n,colors,linestyles)
