@@ -266,8 +266,20 @@ f.close()
 
 --함수를 개별로 적용시키고 싶을때
 	-집계함수는 행or열단위로 실행->각 칸마다 실행하고 싶을때 사용
-    -apply: df와 df.groupby()에 사용가능
+    -apply: df와 df.groupby(), Series에 사용가능
+		df.apply(func,axis=1 or 0)
     -map: series나 df['column']에 사용가능
+@딕셔너리 적용
+    def encoding_df(x):  #여기서 x는 df나 series안의 하나의 값
+    	encoding = {'red':[1,0], 'white':[0,1]}
+    	return encoding[x]
+   얘는 딕셔너리라서 map으로 권장하지만 apply도 가능
+
+-- df.groupby()에서 바로 시각화하기 by .plot()
+wine_group = wine_df.groupby(['type','quality'])
+grp_mean = wine_group.mean()
+grp_mean.plot(kind='bar')  #플롯 종류 kind로 지정
+plt.show()
 
 #맷플롯립
 -- 수직선 긋기: plt.vlines(x,-1,n,colors,linestyles)
