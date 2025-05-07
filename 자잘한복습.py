@@ -341,13 +341,16 @@ roll_mean5 = pd.Series.rolling(df.High,   #high컬럼을 기준으로
 # center가 true면 n번째 행은 앞뒤로 n/2행씩 가져옴
 
 
---카테고리컬 데이터타입 관리
-df['column_name'] = pd.Categorical(df['column_name'],  #지정방법
-                                   categories=['low', 'medium', 'high'],  # 카테고리 순서 정의
+--카테고리컬(범주형) 데이터타입 관리
+-지정
+df['class'] = pd.Categorical(df['class'],  #지정방법
+                                   categories=['first', 'second', 'third'],  # 카테고리 순서 정의
                                    ordered=True)  # 순서가 있는 경우 True
+-카테고리 ordered에 따라 정렬
+df.sort_values(by = 'class') # category 오름차순:  First > Second > Third
 
-
-
+-카테고리 순서변경
+df['class_new'] = df['class'].cat.set_categories(['Third', 'Second', 'First'])
 ----------------------------seaborn-----------------------------------
 
 --dataset 불러오기: nltk.corpus와 유사
@@ -355,9 +358,59 @@ import seaborn as sn
 sn.get_dataset_names()  : 들어있는 데이터들 이름 보여줌
 df=sn.load_dataset('iris') :이런식으로 불러옴
 
--- 
+-- 다양한 시각화: kind로 타입, hue로 범주형 변수지정해 서로 다른 색상으로 시각화 (scatter의 c)
+# seaborn 한글과 음수부호, 스타일 지원 
+sn.set(font="Malgun Gothic", 
+            rc={"axes.unicode_minus":False}, style="darkgrid")
+
+# 1-1. displot : 히스토그램
+sn.displot(data=iris, x='sepal_length', kind='hist')  
+plt.title('iris Sepal length hist') # 단위 : Count 
+plt.show()
 
 
+# 1-2. displot : 밀도분포곡선 
+sn.displot(data=iris, x='sepal_length', kind="kde", hue='species') 
+plt.title('iris Sepal length kde') # 단위 : Density
+plt.show()
+
+
+# 2. 산점도 행렬(scatter matrix)  
+sn.pairplot(data=iris, hue='species') 
+plt.show()
+
+
+# 3. 산점도 : 연속형+연속형   
+sn.scatterplot(x="sepal_length", y="petal_length", data=iris)
+plt.title('산점도 행렬(scatter matrix)')
+plt.show()
+
+# 4. 범주형(카테고리) 변수의 count_values시각화
+sn.countplot(x = 'smoker', data = tips) #somker가 카테고리 컬럼
+plt.title('smoker of tips')
+plt.show()
+
+# 5. 오차대역폭을 갖는 시계열 : x:시간축, y:통계량 
+sn.lineplot(x = 'year', y = 'passengers',hue='month', data = flights)
+plt.show()
+
+
+# 6. 선형회귀모델 : 산점도 + 회귀선 
+sn.regplot(x = 'sepal_length', y = 'petal_length',  data = iris)  
+plt.show()
+
+
+# 7. heatmap : 상관관계를 표현
+y_true = pd.Series([1,0,1,1,0]) # 정답 
+y_pred = pd.Series([1,0,0,1,0]) # 예측치 
+
+# 1) 교차분할표(혼동 행렬) 
+tab = pd.crosstab(y_true, y_pred, 
+            rownames=['관측치'], colnames=['예측치'])
+
+# 2) heatmap
+sn.heatmap(data=tab, annot = True) # annot = True : box에 빈도수 
+plt.show()
 
 -----------------------------------------------------------------------
 # matplotlib에 추가
