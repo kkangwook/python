@@ -451,3 +451,7 @@ R vs numpy:
 	   이미지는 (100,100,3) -> (height, width, channel)형태로 들어감-> 열에 RGB값이 한쌍으로
 		->이때 pytorch로 plt.imshow하면 (3,100,100)형태
 -- 1차원으로 만들기 flatten,ravel말고 arr.reshape(-1) or arr.reshape(m*n)으로 가능 # (m,n) 일때
+
+
+--시드값 적용하면 모든 이용자들은 같은 값 나옴
+np.random.seed(234) 하고 이후에 작동하는 것들은 전부 동일
