@@ -288,7 +288,8 @@ plt.show()
 	   	scatter는 df.plot(kind='scatter',x='',y='')필요 
 		or pandas.plotting.scatter_matrix-> scatter_matrix(df)+ plt.show()
 			-> df각 컬럼들간 모든 조합의 scatter_plot을 matrix로 보여줌(수치형 아닌것들은 df에서 제외필요)
-
+df[['High', 'Low']].plot(color = ['r', 'b']): 컬럼 여러개도 가능
+			
 -- 카이제곱표 만들기 by pd.crosstab() ->두 개 이상의 범주형 변수 간의 교차표
 ex1)
 data = pd.DataFrame({
@@ -321,6 +322,51 @@ table = pd.pivot_table(iris, values=['Sepal.Length', 'Petal.Length'], # 교차�
 
 -pivot_table의 시각화도 가능
 ptable.plot(kind='barh', stacked=True, title='main title')
+
+
+
+--datetime64의 날짜형 인덱싱
+df = df.set_index('Date') :datetime64형태인 date컬럼의 인덱스화
+date값의 예시: 2016-02-01, 2016-01-29등
+df.loc['2016'] : 모든 2016년도 데이터 가져옴
+df.loc['2016-02']: 모든 2016년 2월 데이터 가져옴
+df.loc['2016-01':'2016-02']: sort_index하고 2016년 1월, 2월 다가져올 수 있음
+
+
+-- n일 단위 평균계산: n개치를 평균한 새로운 컬럼 생성
+# rolling은 특정 기준으로 n개를 가져옴
+roll_mean5 = pd.Series.rolling(df.High,   #high컬럼을 기준으로 
+                               window=n, center=False).mean() #window에 개수지정
+# center가 false면 n번째 행부터 그 전 n행개를 가져옴
+# center가 true면 n번째 행은 앞뒤로 n/2행씩 가져옴
+
+
+
+
+
+
+
+
+
+
+
+--산점도행렬: n개의 데이터를 받아 nXn행렬로 두개 샘플간의 산점도 표현 
+from pandas.plotting import scatter_matrix
+scatter_matrix(iris[cols[:4]])  #데이터 여러개 들어감
+plt.show()
+
+
+-- 3차원 산점도
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+chart = fig.add_subplot(projection='3d')
+
+chart.scatter(col_x, col_y, col_z, c = group) #df 국어 수학 영어
+chart.set_xlabel('Sepal.Length')
+chart.set_ylabel('Sepal.Width')
+chart.set_zlabel('Petal.Length')
+plt.show()
+
 
 
 #맷플롯립
