@@ -341,14 +341,26 @@ roll_mean5 = pd.Series.rolling(df.High,   #high컬럼을 기준으로
 # center가 true면 n번째 행은 앞뒤로 n/2행씩 가져옴
 
 
+--카테고리컬 데이터타입 관리
+df['column_name'] = pd.Categorical(df['column_name'],  #지정방법
+                                   categories=['low', 'medium', 'high'],  # 카테고리 순서 정의
+                                   ordered=True)  # 순서가 있는 경우 True
 
 
 
+----------------------------seaborn-----------------------------------
+
+--dataset 불러오기: nltk.corpus와 유사
+import seaborn as sn
+sn.get_dataset_names()  : 들어있는 데이터들 이름 보여줌
+df=sn.load_dataset('iris') :이런식으로 불러옴
+
+-- 
 
 
 
-
-
+-----------------------------------------------------------------------
+# matplotlib에 추가
 
 --산점도행렬: n개의 데이터를 받아 nXn행렬로 두개 샘플간의 산점도 표현 
 from pandas.plotting import scatter_matrix
