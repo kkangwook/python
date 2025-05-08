@@ -242,6 +242,11 @@ def add(x,y):
 f=open('./function.pickle','wb')
 pickle.dump(add,f)
 f.close()
+
+
+--glob: 패턴 인식해서 파일을 가져옴
+from glob import glob
+glob(path + '/data/*.jpg') # jpg파일 가져옴
 -----------------------------------------------------------------------------
 #판다스
 -- df.함수의 default는 axis=0(아래로==열별) 하지만  axis=1도 가능!!!!(행별)
