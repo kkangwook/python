@@ -473,3 +473,42 @@ np.random.normal(173, 5, 2000) mu, sigma, size
 np.random.randn(size) mu=0 sigma=1
 - 균등분포
 np.random.uniform(10, 100, 1000) a,b사이를 c개수만큼
+
+
+--10진수 숫자필기체 데이터 가져오기
+from sklearn.datasets import load_digits 
+digits = load_digits()
+X = digits.data # 입력변수(X) 추출 
+y = digits.target # 출력변수(y) 추출 
+이후 x는 (64,)를 (8,8)로 reshape
+
+--이미지 크기를 조정
+from PIL import Image # PIL=python image lib
+img = Image.open("~.jpg") : plt.imread처럼 이미지를 배열로 읽어옴
+img.shape: (360, 540, 3)라 하면
+img_re = img.resize( (150, 100) ) # (가로, 세로)
+np.shape(img_re) 는 (100,150,3)이 됨
+plt.imshow(img_re) 하면 화질이 구려진 버젼
+
+
+--선형대수학
+- 단위행렬 E
+np.eye(n): nXn에서 대각만 1
+
+-대각성분만 추출
+np.diag(arr): arr의 대각성분만
+
+-대각성분의 합
+np.trace(arr)
+
+-diagnol matrix만드는법
+np.eye(3)X[a,b,c]: 3X3행렬에 대각이 a,b,c
+
+-행렬식(determinant)
+np.linalg.det(arr) #행렬에 같은 행이 하나라도 존재하면 determinant는 0
+
+-역행렬
+np.linalg.inv(arr)
+
+-행렬내적: @
+-행렬위적:np.cross(a, b)
