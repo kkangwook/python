@@ -455,3 +455,21 @@ R vs numpy:
 
 --시드값 적용하면 모든 이용자들은 같은 값 나옴
 np.random.seed(234) 하고 이후에 작동하는 것들은 전부 동일
+
+--np.log(arr) : 밑수 e인 로그함수
+--np.exp(arr) : e^x제곱
+
+--넘파이에서 결측치 보기: np.isnan(arr)
+arr=np.array([1, 2.5,  np.nan, 3.3, 4.6, np.nan])
+arr[~np.isnan(arr)] : 결측치 제거해서 표현
+
+--난수 생성
+-이항분포: 성공/실패 같은 두 가지 결과만 있는 시행
+np.random.binomial(n=1, p=0.5, size=10) n=시행횟수, p= 성공확률
+	-> 몇번성공했는지를 샘플size별로 출력 ex) n=10, p=0.5, size=1에서 [6]나옴: 10번 시도해서 6번 성공했다가 하나의 샘플
+-정규분포 
+np.random.normal(173, 5, 2000) mu, sigma, size
+-표준정규분포
+np.random.randn(size) mu=0 sigma=1
+- 균등분포
+np.random.uniform(10, 100, 1000) a,b사이를 c개수만큼
