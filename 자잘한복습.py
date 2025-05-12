@@ -280,6 +280,8 @@ glob(path + '/data/*.jpg') # jpg파일 가져옴
     	return encoding[x]
    얘는 딕셔너리라서 map으로 권장하지만 apply도 가능
 
+--applymap(func)는 전체 원소에 함수 적용
+
 -- df.groupby()에서 바로 시각화하기 by .plot()
 wine_group = wine_df.groupby(['type','quality'])
 grp_mean = wine_group.mean()
