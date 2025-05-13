@@ -306,6 +306,7 @@ plt.show()
 
 --df.plot() : 인덱스를 x, 값들은 y로하고 모든 컬럼의 값들 표시(색과 레이블 다르게)
 	- x지정하면 그 컬럼의 *고유값*들을 x로, y지정하면 그 지정한 컬럼들의 값들만 표시 
+	- or df[col].plot()으로 x지정도 가능
  kind종류: 불연속적 데이터(이산형) - line, bar, barh, pie, 
 	   연속적 데이터 - hist, kde, box  #kde는 커널밀도추정: 히스토그램의 선형화 버전
 	   	scatter는 df.plot(kind='scatter',x='',y='')필요 
