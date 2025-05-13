@@ -270,9 +270,10 @@ glob(path + '/data/*.jpg') # jpg파일 가져옴
 	df.T
 
 --함수를 개별로 적용시키고 싶을때
-	-집계함수는 행or열단위로 실행->각 칸마다 실행하고 싶을때 사용
+	-집계함수는 행or열단위로 실행하거나 일반함수를 각 요소마다도 실행가능
     -apply: df와 df.groupby(), Series에 사용가능
 		df.apply(func,axis=1 or 0)
+		df[col].apply(func) #이 함수는 집계함수X !!!
     -map: series나 df['column']에 사용가능
 @딕셔너리 적용
     def encoding_df(x):  #여기서 x는 df나 series안의 하나의 값
