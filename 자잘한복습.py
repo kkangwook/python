@@ -283,11 +283,20 @@ glob(path + '/data/*.jpg') # jpg파일 가져옴
 
 --applymap(func)는 전체 원소에 함수 적용
 
+----group by----
+- df.groupby([col1,col2,...,coln])은 인덱스에 왼쪽부터 col1,col2,...,coln순으로 나옴
+
+- df.groupby후 표로 나타낼려면 .get_group말고는 전부 집계함수써야함(count, max, sum등) 
+
 -- df.groupby()에서 바로 시각화하기 by .plot()
 wine_group = wine_df.groupby(['type','quality'])
 grp_mean = wine_group.mean()
-grp_mean.plot(kind='bar', title='main title')  #플롯 종류 kind로 지정
+ !!!반드시 그룹바이 후 집계함수 사용된 이후여야 .plot가능!!! 
+grp_mean.plot(kind='bar', title='main title',y=['pH','citric acid'])  #플롯 종류 kind로 지정
 plt.show()
+
+!!! x에는 인덱스가(그룹,다중그룹이면 튜플로 표시) y에는 요소값이, 그리고 각 컬럼별로 레이블 됨
+	-> y지정안하면 모든 컬럼의 요소들이 전부 표
 
 
 --df.plot() 아무 조건 없으면 선 그래프
