@@ -283,10 +283,14 @@ glob(path + '/data/*.jpg') # jpg파일 가져옴
 
 --applymap(func)는 전체 원소에 함수 적용
 
-----group by----
+----group by---- : 그룹 고유값을 인덱스로 두겠다 
+- 주로 범주형을 하나 또는 여러개 그룹화(수치형도 가능하긴함)
+
 - df.groupby([col1,col2,...,coln])은 인덱스에 왼쪽부터 col1,col2,...,coln순으로 나옴
 
 - df.groupby후 표로 나타낼려면 .get_group말고는 전부 집계함수써야함(count, max, sum등) 
+
+- groupby후 .agg(['mean','sum'])처럼 집계함수 여러개 사용가능-> 각 변수당 함수개수만큼 컬럼개수로 늘어남 
 
 -- df.groupby()에서 바로 시각화하기 by .plot()
 wine_group = wine_df.groupby(['type','quality'])
@@ -295,11 +299,13 @@ grp_mean = wine_group.mean()
 grp_mean.plot(kind='bar', title='main title',y=['pH','citric acid'])  #플롯 종류 kind로 지정
 plt.show()
 
-!!! x에는 인덱스가(그룹,다중그룹이면 튜플로 표시) y에는 요소값이, 그리고 각 컬럼별로 레이블 됨
-	-> y지정안하면 모든 컬럼의 요소들이 전부 표
+!!! x에는 모든 인덱스가(그룹,다중그룹이면 튜플로 표시) y에는 요소값이, 그리고 각 컬럼별로 레이블 됨 !!!
+	-> y지정안하면 모든 컬럼의 요소들이 전부 표시, .pie할때는 y컬럼 하나만 가
 
 
---df.plot() 아무 조건 없으면 선 그래프
+
+--df.plot() : 인덱스를 x, 값들은 y로하고 모든 컬럼의 값들 표시(색과 레이블 다르게)
+	- x지정하면 그 컬럼의 *고유값*들을 x로, y지정하면 그 지정한 컬럼들의 값들만 표시 
  kind종류: 불연속적 데이터(이산형) - line, bar, barh, pie, 
 	   연속적 데이터 - hist, kde, box  #kde는 커널밀도추정: 히스토그램의 선형화 버전
 	   	scatter는 df.plot(kind='scatter',x='',y='')필요 
@@ -312,9 +318,9 @@ ex1)
 data = pd.DataFrame({
     '성별': ['남', '여', '남', '여', '남'],
     '흡연': ['예', '아니오', '예', '아니오', '아니오']})
-pd.crosstab(index=data['성별'], columns=data['흡연'])	
+pd.crosstab(index=data['성별'], columns=data['흡연'])# values, 함수 없으면 디폴트는 count
 
-ex2)
+ex2) values는 반드시 aggfunc와 같이씀
 data = pd.DataFrame({
     '성별': ['남', '여', '남', '여', '남'],
     '흡연': ['예', '아니오', '예', '아니오', '아니오'],
@@ -322,7 +328,7 @@ data = pd.DataFrame({
 pd.crosstab(index=data['성별'], columns=data['흡연'], values=data['나이'], aggfunc='mean')
 
 
---pivot
+--pivot_tabel: 결국group by와 비슷 
 pivot_table(DF, values='값',
                 index = '행 칼럼', columns = '열 칼럼'
                 ,aggFunc = '값에 적용될 함수')  #집계함수 생략하면 평균으로!!!!!
