@@ -359,7 +359,7 @@ df.loc['2016-01':'2016-02']: sort_index하고 2016년 1월, 2월 다가져올 �
 -- n일 단위 평균계산: n개치를 평균한 새로운 컬럼 생성
 # rolling은 특정 기준으로 n개를 가져옴
 roll_mean5 = pd.Series.rolling(df.High,   #high컬럼을 기준으로 
-                               window=n, center=False).mean() #window에 개수지정
+                               window=n, center=False).mean() #window에 개수지정/ 그룹바이처럼 함수써야 보여짐
 # center가 false면 n번째 행부터 그 전 n행개를 가져옴
 # center가 true면 n번째 행은 앞뒤로 n/2행씩 가져옴
 
