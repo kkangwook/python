@@ -1,8 +1,8 @@
 -판다스, 넘파이, 맷플롯(깃허브꺼추가), R, 선형대수
 
--파이썬: 7_extra_things.py(문제), 자잘한복습.py, 파이썬 복습 최종.py
+-파이썬: 파이썬 복습 최종.py(안에  7_extra_things.py, 6, 5문항 후 그 밑의 문제들)
 -SQLD(문제)
 -Webcrawling: 복습.py(문제)
 -NLP: nltk_konlpy.ipynb, 복습.py(문제)
--ML: extra.py, 복습.py(문제)
+-ML: 복습.py(문제)
 -DL: 복습.py
