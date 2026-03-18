@@ -26,6 +26,7 @@ num=12345987.342394872987
 #9. re로 문장부호화 특수문자 제거(?$;:.,*등)
 
 #10. 함수만들때 정보뜨게하기
+# 또한 b=100이라고 미리 정해두게된다면 하는법
 
 #11. 리스트 정렬하기
 data=[
@@ -135,6 +136,9 @@ print(f'{num:<8,.3f}')
 def x(a:int, b:float)->int:
     return a+b
 x()
+두번째꺼
+def x(a:int, b:int=100)->int:
+    return a+b
 
 #11
 print(sorted(data,key=lambda x:x[1],reverse=True))
